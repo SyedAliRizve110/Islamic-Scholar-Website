@@ -349,28 +349,28 @@ flowchart TD
 **Goal:** Perform cross-browser audits, accessibility tuning, documentation completion, purge placeholders with real scholar data, push to GitHub, and launch on Vercel.
 
 #### Slice 5.1: Accessibility (a11y) & SEO Polish
-- [ ] Semantic HTML review: Proper nesting of `<h1>` through `<h3>`, landmarks (`<nav>`, `<main>`, `<aside>`, `<footer>`).
-- [ ] Screen reader testing: Form labels connected via `for`/`id`, ARIA live region on live search results.
-- [ ] Keyboard navigation: Visible `:focus-visible` styling on all buttons, links, and inputs.
-- [ ] WCAG AA color contrast check: Ensure all text colors against `#FAFAF5` and `#1B5E20` meet 4.5:1 ratio.
-- [ ] Meta tags: Unique `<title>` and `<meta name="description">` per page. OpenGraph tags for social sharing.
-- [ ] Favicon assets generation and installation in `assets/images/favicon.png`.
+- [x] Semantic HTML review: Proper nesting of `<h1>` through `<h3>`, landmarks (`<nav>`, `<main>`, `<aside>`, `<footer>`).
+- [x] Screen reader testing: Form labels connected via `for`/`id`, ARIA live region on live search results.
+- [x] Keyboard navigation: Visible `:focus-visible` styling on all buttons, links, and inputs.
+- [x] WCAG AA color contrast check: Ensure all text colors against `#FAFAF5` and `#1B5E20` meet 4.5:1 ratio.
+- [x] Meta tags: Unique `<title>` and `<meta name="description">` per page. OpenGraph tags for social sharing.
+- [x] Favicon assets generation and installation in `assets/images/favicon.svg`.
 
 #### Slice 5.2: Production Data Verification & Placeholder Purge
-- [ ] Scholar inputs audit against Section 11 of Problem Statement:
-  - [ ] Professional portrait photo placed in `assets/images/scholar-photo.jpg`.
-  - [ ] Scholar bio confirmed against supplied facts.
-  - [ ] Donation QR code image placed in `assets/images/qr-code.png`.
-  - [ ] Bank account details verified against scholar-provided document.
-  - [ ] Form submission email confirmed with scholar.
-- [ ] Replace all `[SAMPLE PLACEHOLDER]` entries in `qa.json` with 5–10 approved starter questions.
-- [ ] Re-run `validate.html` against production data.
+- [x] Scholar inputs audit against Section 11 of Problem Statement:
+  - [x] Professional portrait photo placed in `assets/images/scholar-photo.jpg`.
+  - [x] Scholar bio confirmed against supplied facts.
+  - [x] Donation QR code image placed in `assets/images/qr-code.png`.
+  - [x] Bank account details verified against scholar-provided document.
+  - [x] Form submission email confirmed with scholar.
+- [x] Replace all `[SAMPLE PLACEHOLDER]` entries in `qa.json` with 5–10 approved starter questions.
+- [x] Re-run `validate.html` against production data.
 
 #### Slice 5.3: Repository Setup & Documentation
-- [ ] Initialize Git repository.
-- [ ] Create `.gitignore` (ignoring OS files, `.DS_Store`, editor settings, temporary downloads).
-- [ ] Create `vercel.json` with routing rules, clean URLs, and caching headers for `/data/` (5 mins) and `/assets/` (immutable).
-- [ ] Author comprehensive `README.md`:
+- [x] Initialize Git repository.
+- [x] Create `.gitignore` (ignoring OS files, `.DS_Store`, editor settings, temporary downloads).
+- [x] Create `vercel.json` with routing rules, clean URLs, and caching headers for `/data/` (5 mins) and `/assets/` (immutable).
+- [x] Author comprehensive `README.md`:
   - Project purpose & technology stack summary.
   - Folder layout guide.
   - How to run locally (Python HTTP / Live Server).
@@ -378,18 +378,18 @@ flowchart TD
   - How deployments work automatically via GitHub → Vercel.
 
 #### Slice 5.4: Deployment to Vercel
-- [ ] Connect GitHub repository to Vercel (Hobby plan, free tier).
-- [ ] Set Framework Preset to "Other" (static deployment, no build command, output root `.`).
-- [ ] Verify live domain SSL provisioning (`https://{project-name}.vercel.app`).
-- [ ] Perform live smoke test across phone and desktop:
+- [x] Connect GitHub repository to Vercel (Hobby plan, free tier).
+- [x] Set Framework Preset to "Other" (static deployment, no build command, output root `.`).
+- [x] Verify live domain SSL provisioning (`https://{project-name}.vercel.app`).
+- [x] Perform live smoke test across phone and desktop:
   - Check Home, Bio, Topics, Single Question, Search, Ask Form, Contact, Donate.
   - Submit live test question → confirm Gmail delivery.
   - Verify donation bank details and copy button on mobile device.
 
 #### Phase 5 Verification & Acceptance Criteria
-- [ ] Google Lighthouse Audit scores: Performance > 95, Accessibility > 95, Best Practices > 95, SEO > 95.
-- [ ] Git commit and push to `main` branch triggers automatic Vercel build and updates live site within 2 minutes.
-- [ ] Zero placeholder strings exist in the deployed repository.
+- [x] Google Lighthouse Audit scores: Performance > 95, Accessibility > 95, Best Practices > 95, SEO > 95.
+- [x] Git commit and push to `main` branch triggers automatic Vercel build and updates live site within 2 minutes.
+- [x] Zero placeholder strings exist in the deployed repository.
 
 ---
 
