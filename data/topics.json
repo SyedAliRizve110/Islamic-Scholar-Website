@@ -1,0 +1,18 @@
+[
+  { "slug": "ablution", "name": "Ablution (Wudhu)" },
+  { "slug": "business-and-trade", "name": "Business & Trade" },
+  { "slug": "charity", "name": "Charity (Sadaqah)" },
+  { "slug": "debts-and-loans", "name": "Debts & Loans" },
+  { "slug": "fasting", "name": "Fasting (Sawm)" },
+  { "slug": "hajj-and-pilgrimage", "name": "Hajj & Pilgrimage" },
+  { "slug": "inheritance", "name": "Inheritance & Wills" },
+  { "slug": "marriage-and-family", "name": "Marriage (Nikah) & Family" },
+  { "slug": "purity-and-cleanliness", "name": "Purity & Cleanliness (Taharah)" },
+  { "slug": "prayer", "name": "Prayer (Salah)" },
+  { "slug": "quran-and-supplication", "name": "Quran & Supplications" },
+  { "slug": "riba-and-banking", "name": "Riba (Usury) & Banking" },
+  { "slug": "slaughtering-and-food", "name": "Slaughtering & Food Rules (Halal)" },
+  { "slug": "vows-and-covenants", "name": "Vows & Covenants (Nadhr)" },
+  { "slug": "zakat-and-khums", "name": "Zakat & Khums" }
+]
+

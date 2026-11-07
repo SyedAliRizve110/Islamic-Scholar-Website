@@ -1,0 +1,229 @@
+/* ==========================================================================
+   Admin Management Dashboard Styles
+   Scholar Q&A Website (Local Only)
+   ========================================================================== */
+
+.admin-header-bar {
+  background-color: #0D3B13;
+  color: #FFFFFF;
+  padding: var(--space-md) 0;
+  border-bottom: 3px solid var(--color-accent);
+}
+
+.admin-header-inner {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-md);
+}
+
+.admin-brand {
+  display: flex;
+  align-items: center;
+  gap: var(--space-sm);
+}
+
+.admin-badge {
+  background-color: var(--color-accent);
+  color: var(--color-primary-dark);
+  font-size: var(--font-size-xs);
+  font-weight: var(--font-weight-bold);
+  padding: 0.2rem 0.6rem;
+  border-radius: var(--border-radius-sm);
+  text-transform: uppercase;
+}
+
+.admin-status-indicator {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: var(--font-size-xs);
+  color: #D4E0D6;
+  background-color: rgba(255, 255, 255, 0.1);
+  padding: 0.3rem 0.75rem;
+  border-radius: var(--border-radius-full);
+}
+
+.status-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background-color: #76FF03;
+}
+
+.status-dot.is-offline {
+  background-color: #FF9800;
+}
+
+/* File Loader Section */
+.admin-loader-box {
+  background-color: var(--color-bg-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--border-radius);
+  padding: var(--space-lg);
+  margin-bottom: var(--space-xl);
+  box-shadow: var(--shadow-sm);
+}
+
+.admin-action-bar {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-sm);
+  margin-bottom: var(--space-lg);
+}
+
+/* Data Table */
+.admin-table-wrapper {
+  background-color: var(--color-bg-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--border-radius);
+  overflow-x: auto;
+  box-shadow: var(--shadow-sm);
+  margin-bottom: var(--space-xl);
+}
+
+.admin-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: var(--font-size-sm);
+  text-align: left;
+}
+
+.admin-table th {
+  background-color: var(--color-bg-alt);
+  color: var(--color-primary-dark);
+  font-weight: var(--font-weight-semibold);
+  padding: var(--space-md);
+  border-bottom: 2px solid var(--color-border);
+  white-space: nowrap;
+}
+
+.admin-table td {
+  padding: var(--space-md);
+  border-bottom: 1px solid var(--color-border-light);
+  vertical-align: top;
+}
+
+.admin-table tr:hover {
+  background-color: var(--color-primary-subtle);
+}
+
+.admin-table-id {
+  font-weight: var(--font-weight-bold);
+  font-family: monospace;
+  color: var(--color-primary);
+}
+
+.admin-table-actions {
+  display: flex;
+  gap: var(--space-xs);
+  white-space: nowrap;
+}
+
+/* Modal Overlay */
+.admin-modal-overlay {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.65);
+  z-index: 2000;
+  align-items: center;
+  justify-content: center;
+  padding: var(--space-md);
+}
+
+.admin-modal-overlay.is-active {
+  display: flex;
+}
+
+.admin-modal-card {
+  background-color: var(--color-bg-surface);
+  border-radius: var(--border-radius-lg);
+  max-width: 720px;
+  width: 100%;
+  max-height: 90vh;
+  overflow-y: auto;
+  box-shadow: var(--shadow-lg);
+  border: 1px solid var(--color-border);
+}
+
+.admin-modal-header {
+  padding: var(--space-md) var(--space-xl);
+  background-color: var(--color-primary-dark);
+  color: #FFFFFF;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 2px solid var(--color-accent);
+}
+
+.admin-modal-header h3 {
+  color: #FFFFFF;
+  margin: 0;
+  font-size: var(--font-size-lg);
+}
+
+.admin-modal-close {
+  background: transparent;
+  border: none;
+  color: #FFFFFF;
+  font-size: 1.5rem;
+  line-height: 1;
+  cursor: pointer;
+  padding: 0;
+}
+
+.admin-modal-body {
+  padding: var(--space-xl);
+}
+
+.admin-modal-footer {
+  padding: var(--space-md) var(--space-xl);
+  background-color: var(--color-bg-alt);
+  border-top: 1px solid var(--color-border);
+  display: flex;
+  justify-content: flex-end;
+  gap: var(--space-sm);
+}
+
+/* Code Snippet Box for Git steps */
+.git-code-box {
+  background-color: #1E1E1E;
+  color: #D4D4D4;
+  padding: var(--space-md);
+  border-radius: var(--border-radius);
+  font-family: monospace;
+  font-size: var(--font-size-sm);
+  line-height: 1.6;
+  margin: var(--space-sm) 0 var(--space-md) 0;
+  position: relative;
+  overflow-x: auto;
+}
+
+/* Validation items */
+.validation-item {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--space-sm);
+  padding: var(--space-sm) var(--space-md);
+  border-radius: var(--border-radius-sm);
+  margin-bottom: var(--space-xs);
+  font-size: var(--font-size-sm);
+}
+
+.validation-item.pass {
+  background-color: var(--color-success-bg);
+  color: var(--color-success);
+}
+
+.validation-item.fail {
+  background-color: var(--color-error-bg);
+  color: var(--color-error);
+}
+

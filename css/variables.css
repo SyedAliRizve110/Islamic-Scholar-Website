@@ -1,0 +1,103 @@
+/* ==========================================================================
+   Design Tokens & CSS Variables
+   Scholar Q&A Website
+   ========================================================================== */
+
+:root {
+  /* Colour Palette: Islamic Green, Gold Accent & Warm Neutrals */
+  --color-primary:        #1B5E20;   /* Deep Islamic Green */
+  --color-primary-light:  #2E7D32;   /* Lighter Green for Hover & Accents */
+  --color-primary-dark:   #0D3B13;   /* Darker Forest Green */
+  --color-primary-subtle: #E8F5E9;   /* Very Light Tint for Highlights */
+
+  --color-accent:         #C8A951;   /* Warm Gold Accent */
+  --color-accent-light:   #E0C778;   /* Light Gold */
+  --color-accent-dark:    #9E802A;   /* Deep Gold */
+  --color-accent-subtle:  #FDFBF2;   /* Cream Gold Tint */
+
+  /* Surface & Background Neutrals */
+  --color-bg:             #FAFAF5;   /* Warm Off-White Page Canvas */
+  --color-bg-surface:     #FFFFFF;   /* Pure White for Cards & Surfaces */
+  --color-bg-alt:         #F0EDE4;   /* Warm Neutral Gray for Secondary Sections */
+  --color-bg-dim:         #E5E0D5;   /* Dimmed Surface */
+
+  /* Text & Foreground */
+  --color-text:           #2C2C2C;   /* Main Body Text (High Contrast) */
+  --color-text-muted:     #666666;   /* Secondary / Metadata Text */
+  --color-text-subtle:    #8A8A8A;   /* Tertiary / Placeholder Text */
+  --color-text-inverse:   #FFFFFF;   /* Text on Dark Backgrounds */
+
+  /* Borders & Dividers */
+  --color-border:         #DCD7CA;   /* Standard Card & Element Border */
+  --color-border-light:   #ECE8DE;   /* Subtle Divider Border */
+  --color-border-focus:   #1B5E20;   /* Accessibility Focus Ring Border */
+
+  /* Status & Feedback */
+  --color-error:          #B71C1C;   /* Error State */
+  --color-error-bg:       #FFEBEE;   /* Error Background */
+  --color-success:        #2E7D32;   /* Success State */
+  --color-success-bg:     #E8F5E9;   /* Success Background */
+  --color-warning:        #E65100;   /* Warning */
+  --color-warning-bg:     #FFF3E0;   /* Warning Background */
+
+  /* Typography Scales */
+  --font-body:            'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+  --font-heading:         'Playfair Display', Georgia, 'Times New Roman', serif;
+  --font-arabic:          'Noto Naskh Arabic', 'Amiri', serif; /* Reserved for Arabic/Urdu RTL */
+
+  /* Modular Font Sizes */
+  --font-size-xs:         0.75rem;    /* 12px */
+  --font-size-sm:         0.875rem;   /* 14px */
+  --font-size-base:       1rem;       /* 16px */
+  --font-size-md:         1.125rem;   /* 18px */
+  --font-size-lg:         1.25rem;    /* 20px */
+  --font-size-xl:         1.5rem;     /* 24px */
+  --font-size-2xl:        1.875rem;   /* 30px */
+  --font-size-3xl:        2.25rem;    /* 36px */
+
+  /* Line Heights */
+  --line-height-tight:    1.25;
+  --line-height-normal:   1.5;
+  --line-height-relaxed:  1.7;
+
+  /* Font Weights */
+  --font-weight-regular:  400;
+  --font-weight-medium:   500;
+  --font-weight-semibold: 600;
+  --font-weight-bold:     700;
+
+  /* Spacing Scale (Base: 4px) */
+  --space-2xs: 2px;
+  --space-xs:  4px;
+  --space-sm:  8px;
+  --space-md:  16px;
+  --space-lg:  24px;
+  --space-xl:  32px;
+  --space-2xl: 48px;
+  --space-3xl: 64px;
+
+  /* Layout Boundaries */
+  --container-max:        1120px;
+  --container-narrow:     800px;
+  --sidebar-width:        320px;
+  --header-height:        72px;
+
+  /* Radii & Shadows */
+  --border-radius-sm:     4px;
+  --border-radius:        8px;
+  --border-radius-lg:     12px;
+  --border-radius-full:   9999px;
+
+  --shadow-sm:  0 1px 2px rgba(0, 0, 0, 0.05);
+  --shadow-md:  0 4px 6px -1px rgba(0, 0, 0, 0.08), 0 2px 4px -1px rgba(0, 0, 0, 0.04);
+  --shadow-lg:  0 10px 15px -3px rgba(0, 0, 0, 0.08), 0 4px 6px -2px rgba(0, 0, 0, 0.03);
+
+  /* Transitions */
+  --transition-fast:   150ms ease-in-out;
+  --transition-normal: 250ms ease-in-out;
+
+  /* Focus Ring */
+  --focus-ring: 2px solid var(--color-accent);
+  --focus-offset: 2px;
+}
+

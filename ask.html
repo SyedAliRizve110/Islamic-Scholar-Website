@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Send a Question — Ayatullah Syed Sibtain Abbas Rizvi</title>
+  <meta name="description" content="Submit a religious question or inquiry directly to Ayatullah Syed Sibtain Abbas Rizvi without logging in. All questions are sent directly to the scholar's inbox.">
+  <link rel="icon" href="assets/images/favicon.png" type="image/png">
+  <link rel="stylesheet" href="css/variables.css">
+  <link rel="stylesheet" href="css/reset.css">
+  <link rel="stylesheet" href="css/layout.css">
+  <link rel="stylesheet" href="css/components.css">
+  <link rel="stylesheet" href="css/pages.css">
+  <link rel="stylesheet" href="css/responsive.css">
+</head>
+<body class="site-wrapper">
+  <!-- Shared Header Injected by js/nav.js -->
+  <div id="site-header"></div>
+
+  <!-- Page Header -->
+  <section class="hero-banner" style="padding: var(--space-xl) 0;" aria-label="Ask Question Header">
+    <div class="container">
+      <div class="hero-inner">
+        <div class="hero-content">
+          <div class="hero-emblem">Religious Inquiry</div>
+          <h1 class="hero-title" style="margin-bottom: var(--space-2xs);">Send a Question to the Scholar</h1>
+          <p class="hero-subtitle" style="margin-bottom: 0;">
+            Submit your jurisprudential or religious inquiry directly to Ayatullah Syed Sibtain Abbas Rizvi. No account required.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Main Content Layout -->
+  <main class="main-content" id="main-content">
+    <div class="container container-narrow">
+      <nav class="breadcrumbs" aria-label="Breadcrumb">
+        <a href="index.html">Home</a>
+        <span class="breadcrumbs-separator">/</span>
+        <span class="breadcrumbs-current">Ask a Question</span>
+      </nav>
+
+      <!-- Guidelines Box -->
+      <div class="ask-guidelines-box">
+        <h2 style="font-size: var(--font-size-base); color: var(--color-primary-dark); margin-bottom: var(--space-xs);">
+          Guidelines for Submitting an Inquiry
+        </h2>
+        <ul>
+          <li>State your question clearly and provide necessary background context (e.g. travel status, specific medical condition).</li>
+          <li>Questions are delivered directly to the scholar's personal email inbox for review.</li>
+          <li><strong>Privacy Guarantee:</strong> Answered questions may be edited for clarity and published in the public Q&amp;A index for community benefit. <em>Your name and email address will never be published or shared.</em></li>
+        </ul>
+      </div>
+
+      <!-- Live Error / Alert Banner Mount -->
+      <div id="ask-alert-container" style="display: none;" aria-live="assertive"></div>
+
+      <!-- Form Card -->
+      <div class="ask-form-card">
+        <form id="ask-question-form" novalidate>
+          
+          <!-- Hidden Anti-Spam Honeypot Field -->
+          <div class="form-honeypot" aria-hidden="true">
+            <label for="ask-honeypot">Leave this field blank</label>
+            <input type="text" id="ask-honeypot" name="_gotcha" tabindex="-1" autocomplete="off">
+          </div>
+
+          <!-- Topic Selection (Optional) -->
+          <div class="form-group">
+            <label for="ask-topic-select" class="form-label">
+              Topic Category <span style="font-weight: normal; color: var(--color-text-muted);">(Optional)</span>
+            </label>
+            <select id="ask-topic-select" name="topic" class="form-control">
+              <option value="">Not sure / General Jurisprudence</option>
+            </select>
+            <div class="form-text">Selecting a topic helps organize questions, but is not required.</div>
+          </div>
+
+          <!-- Question Content (Required) -->
+          <div class="form-group">
+            <label for="ask-question" class="form-label">
+              Your Question <span class="required">*</span>
+            </label>
+            <textarea id="ask-question" 
+                      name="question" 
+                      class="form-control" 
+                      rows="6" 
+                      placeholder="Please write your religious question here in detail..."
+                      required
+                      aria-required="true"
+                      aria-describedby="ask-question-error"></textarea>
+            <div id="ask-question-error" class="form-error" role="alert"></div>
+            <div class="form-text">Minimum 20 characters required.</div>
+          </div>
+
+          <!-- Inquirer Name (Optional) -->
+          <div class="form-group">
+            <label for="ask-name" class="form-label">
+              Your Name <span style="font-weight: normal; color: var(--color-text-muted);">(Optional)</span>
+            </label>
+            <input type="text" 
+                   id="ask-name" 
+                   name="name" 
+                   class="form-control" 
+                   placeholder="e.g. Ali (or leave blank to remain completely anonymous)">
+            <div class="form-text">Never displayed publicly on the website.</div>
+          </div>
+
+          <!-- Inquirer Email (Optional) -->
+          <div class="form-group">
+            <label for="ask-email" class="form-label">
+              Your Email Address <span style="font-weight: normal; color: var(--color-text-muted);">(Optional)</span>
+            </label>
+            <input type="email" 
+                   id="ask-email" 
+                   name="email" 
+                   class="form-control" 
+                   placeholder="e.g. yourname@example.com"
+                   aria-describedby="ask-email-error">
+            <div id="ask-email-error" class="form-error" role="alert"></div>
+            <div class="form-text">Only provided if you wish to receive a direct response in your inbox.</div>
+          </div>
+
+          <!-- Submit Action -->
+          <div style="margin-top: var(--space-xl);">
+            <button type="submit" id="ask-submit-btn" class="btn btn-primary btn-lg" style="width: 100%;">
+              Send Question to Scholar &rarr;
+            </button>
+          </div>
+
+        </form>
+
+        <!-- Secondary Mailto Direct Link Fallback -->
+        <div style="margin-top: var(--space-xl); padding-top: var(--space-lg); border-top: 1px solid var(--color-border-light); text-align: center; font-size: var(--font-size-xs); color: var(--color-text-muted);">
+          Prefer sending via your email software? 
+          <a href="mailto:contact@scholar-qa.example" id="direct-email-fallback-link" style="color: var(--color-primary); font-weight: var(--font-weight-medium);">
+            Click here to email the scholar directly &rarr;
+          </a>
+        </div>
+
+      </div>
+
+    </div>
+  </main>
+
+  <!-- Shared Footer Injected by js/nav.js -->
+  <div id="site-footer"></div>
+
+  <!-- Scripts -->
+  <script src="js/utils.js"></script>
+  <script src="js/data-loader.js"></script>
+  <script src="js/nav.js"></script>
+  <script src="js/ask-form.js"></script>
+</body>
+</html>
+

@@ -1,0 +1,40 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 300" width="300" height="300">
+  <defs>
+    <linearGradient id="qrGold" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#C8A951"/>
+      <stop offset="100%" stop-color="#9E802A"/>
+    </linearGradient>
+  </defs>
+  <rect width="300" height="300" rx="12" fill="#FFFFFF" stroke="#DCD7CA" stroke-width="2"/>
+  
+  <!-- Outer Corner QR Position Markers -->
+  <!-- Top Left -->
+  <rect x="30" y="30" width="60" height="60" rx="6" fill="none" stroke="#1B5E20" stroke-width="8"/>
+  <rect x="45" y="45" width="30" height="30" rx="3" fill="#1B5E20"/>
+
+  <!-- Top Right -->
+  <rect x="210" y="30" width="60" height="60" rx="6" fill="none" stroke="#1B5E20" stroke-width="8"/>
+  <rect x="225" y="45" width="30" height="30" rx="3" fill="#1B5E20"/>
+
+  <!-- Bottom Left -->
+  <rect x="30" y="210" width="60" height="60" rx="6" fill="none" stroke="#1B5E20" stroke-width="8"/>
+  <rect x="45" y="225" width="30" height="30" rx="3" fill="#1B5E20"/>
+
+  <!-- Center Decorative Grid & Placeholder text -->
+  <rect x="110" y="110" width="80" height="80" rx="8" fill="#FAFAF5" stroke="url(#qrGold)" stroke-width="2"/>
+  <text x="150" y="145" font-family="'Playfair Display', Georgia, serif" font-size="14" fill="#1B5E20" font-weight="bold" text-anchor="middle">
+    DONATION
+  </text>
+  <text x="150" y="165" font-family="'Inter', sans-serif" font-size="11" fill="#C8A951" font-weight="bold" text-anchor="middle">
+    QR CODE
+  </text>
+
+  <!-- Instructional notice -->
+  <text x="150" y="240" font-family="'Inter', sans-serif" font-size="10" fill="#666666" text-anchor="middle">
+    Place real QR image at:
+  </text>
+  <text x="150" y="255" font-family="monospace" font-size="9" fill="#1B5E20" text-anchor="middle">
+    assets/images/qr-code.png
+  </text>
+</svg>
+

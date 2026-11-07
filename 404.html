@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Page Not Found — Ayatullah Syed Sibtain Abbas Rizvi</title>
+  <meta name="description" content="The page or answer you requested was not found or may have been relocated.">
+  <link rel="icon" href="assets/images/favicon.png" type="image/png">
+  <link rel="stylesheet" href="css/variables.css">
+  <link rel="stylesheet" href="css/reset.css">
+  <link rel="stylesheet" href="css/layout.css">
+  <link rel="stylesheet" href="css/components.css">
+  <link rel="stylesheet" href="css/pages.css">
+  <link rel="stylesheet" href="css/responsive.css">
+</head>
+<body class="site-wrapper">
+  <!-- Shared Header Injected by js/nav.js -->
+  <div id="site-header"></div>
+
+  <!-- Main Content Layout -->
+  <main class="main-content" id="main-content">
+    <div class="container container-narrow">
+      
+      <div class="card" style="padding: var(--space-2xl) var(--space-xl); text-align: center; margin-top: var(--space-xl); margin-bottom: var(--space-2xl);">
+        <div style="font-size: 3.5rem; color: var(--color-accent); line-height: 1; margin-bottom: var(--space-md); font-family: var(--font-heading); font-weight: bold;">
+          404
+        </div>
+        
+        <h1 style="font-size: var(--font-size-2xl); color: var(--color-primary-dark); margin-bottom: var(--space-xs); font-family: var(--font-heading);">
+          Page or Answer Not Found
+        </h1>
+        
+        <p style="font-size: var(--font-size-md); color: var(--color-text-muted); max-width: 500px; margin: 0 auto var(--space-xl) auto; line-height: var(--line-height-relaxed);">
+          The page you requested could not be located. If you were following a link to a specific ruling, the answer may have been revised or updated under a different topic.
+        </p>
+
+        <!-- Search Callout Form -->
+        <div style="max-width: 480px; margin: 0 auto var(--space-xl) auto;">
+          <form action="topics.html" method="GET" style="display: flex; gap: var(--space-xs);">
+            <input type="search" 
+                   name="q" 
+                   class="form-control" 
+                   placeholder="Search questions and rulings..." 
+                   aria-label="Search questions and rulings">
+            <button type="submit" class="btn btn-primary btn-sm">Search</button>
+          </form>
+        </div>
+
+        <div style="display: flex; justify-content: center; flex-wrap: wrap; gap: var(--space-sm);">
+          <a href="topics.html" class="btn btn-primary btn-md">Browse A–Z Topics Index &rarr;</a>
+          <a href="index.html" class="btn btn-outline btn-md">Return to Home Page</a>
+          <a href="ask.html" class="btn btn-secondary btn-md">Ask a Question</a>
+        </div>
+      </div>
+
+    </div>
+  </main>
+
+  <!-- Shared Footer Injected by js/nav.js -->
+  <div id="site-footer"></div>
+
+  <!-- Scripts -->
+  <script src="js/utils.js"></script>
+  <script src="js/data-loader.js"></script>
+  <script src="js/nav.js"></script>
+</body>
+</html>
+

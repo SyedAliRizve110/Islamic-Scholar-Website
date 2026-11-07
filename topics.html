@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>A–Z Topic Index — Ayatullah Syed Sibtain Abbas Rizvi</title>
+  <meta name="description" content="Browse questions and answered legal rulings by Ayatullah Syed Sibtain Abbas Rizvi grouped alphabetically by topic. Instant search across all Islamic rulings.">
+  <link rel="icon" href="assets/images/favicon.png" type="image/png">
+  <link rel="stylesheet" href="css/variables.css">
+  <link rel="stylesheet" href="css/reset.css">
+  <link rel="stylesheet" href="css/layout.css">
+  <link rel="stylesheet" href="css/components.css">
+  <link rel="stylesheet" href="css/pages.css">
+  <link rel="stylesheet" href="css/responsive.css">
+</head>
+<body class="site-wrapper">
+  <!-- Shared Header Injected by js/nav.js -->
+  <div id="site-header"></div>
+
+  <!-- Page Header -->
+  <section class="hero-banner" style="padding: var(--space-xl) 0;" aria-label="Topic Index Header">
+    <div class="container">
+      <div class="hero-inner">
+        <div class="hero-content">
+          <div class="hero-emblem">Jurisprudence Archive</div>
+          <h1 class="hero-title" style="margin-bottom: var(--space-2xs);">Browse Questions by Topic</h1>
+          <p class="hero-subtitle" style="margin-bottom: 0;">
+            Browse Islamic rulings and answered inquiries grouped alphabetically from A to Z, or search keywords instantly.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Main Content Layout -->
+  <main class="main-content" id="main-content">
+    <div class="container">
+      <nav class="breadcrumbs" aria-label="Breadcrumb">
+        <a href="index.html">Home</a>
+        <span class="breadcrumbs-separator">/</span>
+        <span class="breadcrumbs-current">Topics Index</span>
+      </nav>
+
+      <!-- Instant Live Search Bar -->
+      <section class="search-container" id="search-section" aria-label="Search Questions">
+        <div class="search-input-wrapper">
+          <span class="search-icon" aria-hidden="true">&#128269;</span>
+          <input type="search" 
+                 id="qa-search-input" 
+                 class="search-input" 
+                 placeholder="Search by keywords (e.g., prayer travel, fasting inhaler, wudhu, khums)..."
+                 aria-label="Search questions, answers, and topics">
+          <button type="button" 
+                  id="qa-search-clear" 
+                  class="search-clear-btn" 
+                  aria-label="Clear search input">
+            &times;
+          </button>
+        </div>
+      </section>
+
+      <!-- Live Search Results Mount (Replaces default content while searching) -->
+      <section id="search-results-container" style="display: none;" aria-live="polite">
+        <!-- Injected dynamically by js/search.js -->
+      </section>
+
+      <!-- Default Content: Sticky A-Z Bar + Alphabetical Topic Groups -->
+      <div id="default-content-container">
+        <!-- Sticky A-Z Jump Bar Mount -->
+        <div id="jump-bar-container">
+          <!-- Injected dynamically by js/topics-index.js -->
+        </div>
+
+        <div class="section-header">
+          <h2 class="section-title">A–Z Jurisprudence Topics</h2>
+          <div class="section-lead">Select any topic to view all answered inquiries and authoritative rulings.</div>
+        </div>
+
+        <!-- Alphabetical Topics Grid Mount -->
+        <div id="topics-index-container">
+          <div style="text-align: center; padding: var(--space-xl); color: var(--color-text-muted);">
+            Loading topics catalog...
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </main>
+
+  <!-- Shared Footer Injected by js/nav.js -->
+  <div id="site-footer"></div>
+
+  <!-- Scripts -->
+  <script src="js/utils.js"></script>
+  <script src="js/data-loader.js"></script>
+  <script src="js/vendor/fuse.min.js"></script>
+  <script src="js/nav.js"></script>
+  <script src="js/topics-index.js"></script>
+  <script src="js/search.js"></script>
+</body>
+</html>
+

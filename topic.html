@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Topic Questions — Ayatullah Syed Sibtain Abbas Rizvi</title>
+  <meta name="description" content="Read answered questions and Islamic jurisprudence rulings by Ayatullah Syed Sibtain Abbas Rizvi.">
+  <link rel="icon" href="assets/images/favicon.png" type="image/png">
+  <link rel="stylesheet" href="css/variables.css">
+  <link rel="stylesheet" href="css/reset.css">
+  <link rel="stylesheet" href="css/layout.css">
+  <link rel="stylesheet" href="css/components.css">
+  <link rel="stylesheet" href="css/pages.css">
+  <link rel="stylesheet" href="css/responsive.css">
+</head>
+<body class="site-wrapper">
+  <!-- Shared Header Injected by js/nav.js -->
+  <div id="site-header"></div>
+
+  <!-- Page Header Banner -->
+  <section class="hero-banner" style="padding: var(--space-xl) 0;" aria-label="Topic Header">
+    <div class="container">
+      <div class="hero-inner">
+        <div class="hero-content">
+          <div class="hero-emblem">Topic Category</div>
+          <h1 class="hero-title" id="topic-title" style="margin-bottom: var(--space-2xs);">Loading Topic...</h1>
+          <p class="hero-subtitle" id="topic-count" style="margin-bottom: 0;">
+            Retrieving published rulings...
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Main Content Layout -->
+  <main class="main-content" id="main-content">
+    <div class="container">
+      <nav class="breadcrumbs" aria-label="Breadcrumb">
+        <a href="index.html">Home</a>
+        <span class="breadcrumbs-separator">/</span>
+        <a href="topics.html">Topics Index</a>
+        <span class="breadcrumbs-separator">/</span>
+        <span class="breadcrumbs-current" id="topic-breadcrumb">Topic</span>
+      </nav>
+
+      <!-- Instant Live Search Bar -->
+      <section class="search-container" id="search-section" aria-label="Search Questions">
+        <div class="search-input-wrapper">
+          <span class="search-icon" aria-hidden="true">&#128269;</span>
+          <input type="search" 
+                 id="qa-search-input" 
+                 class="search-input" 
+                 placeholder="Search across all questions and answers..."
+                 aria-label="Search questions and answers">
+          <button type="button" 
+                  id="qa-search-clear" 
+                  class="search-clear-btn" 
+                  aria-label="Clear search input">
+            &times;
+          </button>
+        </div>
+      </section>
+
+      <!-- Live Search Results Mount -->
+      <section id="search-results-container" style="display: none;" aria-live="polite"></section>
+
+      <!-- Default Topic Questions List -->
+      <div id="default-content-container">
+        <div class="section-header">
+          <h2 class="section-title">Published Questions &amp; Rulings</h2>
+          <div class="section-lead">Ordered newest first. Click any question to read the full answer.</div>
+        </div>
+
+        <div class="qa-list" id="topic-qa-list">
+          <div style="text-align: center; padding: var(--space-xl); color: var(--color-text-muted);">
+            Loading questions...
+          </div>
+        </div>
+
+        <!-- Submit Inquiry Callout -->
+        <div class="card" style="margin-top: var(--space-2xl); background-color: var(--color-bg-alt);">
+          <div class="card-body" style="display: flex; flex-direction: column; gap: var(--space-sm);">
+            <h3 style="font-size: var(--font-size-md); color: var(--color-primary-dark); margin: 0;">
+              Did not find what you were looking for?
+            </h3>
+            <p style="font-size: var(--font-size-sm); color: var(--color-text-muted); margin: 0;">
+              You can submit your question directly to Ayatullah Syed Sibtain Abbas Rizvi without logging in.
+            </p>
+            <div>
+              <a href="ask.html" class="btn btn-primary btn-sm">Send a Question &rarr;</a>
+              <a href="topics.html" class="btn btn-outline btn-sm">Browse Other Topics</a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </main>
+
+  <!-- Shared Footer Injected by js/nav.js -->
+  <div id="site-footer"></div>
+
+  <!-- Scripts -->
+  <script src="js/utils.js"></script>
+  <script src="js/data-loader.js"></script>
+  <script src="js/vendor/fuse.min.js"></script>
+  <script src="js/nav.js"></script>
+  <script src="js/topic-page.js"></script>
+  <script src="js/search.js"></script>
+</body>
+</html>
+

@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Data Integrity Validator — Scholar Q&amp;A Website</title>
+  <link rel="icon" href="assets/images/favicon.png" type="image/png">
+  <link rel="stylesheet" href="css/variables.css">
+  <link rel="stylesheet" href="css/reset.css">
+  <link rel="stylesheet" href="css/layout.css">
+  <link rel="stylesheet" href="css/components.css">
+  <link rel="stylesheet" href="css/admin.css">
+  <link rel="stylesheet" href="css/responsive.css">
+</head>
+<body class="site-wrapper">
+  <!-- Shared Header -->
+  <div id="site-header"></div>
+
+  <main class="main-content" id="main-content">
+    <div class="container container-narrow">
+      <div class="section-header">
+        <h1 class="section-title">Data Integrity Validator</h1>
+        <div class="section-lead">Pre-deployment schema and relational consistency test suite.</div>
+      </div>
+
+      <div class="card" style="margin-bottom: var(--space-xl);">
+        <div class="card-body">
+          <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: var(--space-md);">
+            <h2 style="font-size: var(--font-size-md); margin: 0; color: var(--color-primary-dark);">
+              Automated Consistency Checks
+            </h2>
+            <button type="button" class="btn btn-primary btn-sm" id="btn-retest">
+              ↻ Run Audit Again
+            </button>
+          </div>
+          <div id="validator-status-summary" style="margin-bottom: var(--space-lg);">
+            <div style="color: var(--color-text-muted);">Auditing data files...</div>
+          </div>
+          <div id="validator-checklist"></div>
+        </div>
+      </div>
+
+      <div style="text-align: center;">
+        <a href="admin.html" class="btn btn-outline btn-sm">Open Admin Console &rarr;</a>
+      </div>
+    </div>
+  </main>
+
+  <!-- Shared Footer -->
+  <div id="site-footer"></div>
+
+  <script src="js/utils.js"></script>
+  <script src="js/data-loader.js"></script>
+  <script src="js/nav.js"></script>
+  <script>
+    async function runFullAudit() {
+      const summaryEl = document.getElementById('validator-status-summary');
+      const listEl = document.getElementById('validator-checklist');
+      if (!listEl) return;
+
+      listEl.innerHTML = '';
+      summaryEl.innerHTML = '<div style="color: var(--color-text-muted);">Auditing data files...</div>';
+
+      const results = [];
+
+      try {
+        const [qa, topics, site] = await Promise.all([
+          window.DataLoader.loadQA(true),
+          window.DataLoader.loadTopics(true),
+          window.DataLoader.loadSiteInfo(true)
+        ]);
+
+        // Test 1: qa.json loaded
+        if (Array.isArray(qa) && qa.length > 0) {
+          results.push({ pass: true, msg: `qa.json contains ${qa.length} valid entries.` });
+        } else {
+          results.push({ pass: false, msg: 'qa.json is empty or not an array.' });
+        }
+
+        // Test 2: topics.json loaded
+        if (Array.isArray(topics) && topics.length > 0) {
+          results.push({ pass: true, msg: `topics.json contains ${topics.length} defined topics.` });
+        } else {
+          results.push({ pass: false, msg: 'topics.json is empty or not an array.' });
+        }
+
+        // Test 3: ID uniqueness and sequence
+        const ids = new Set();
+        let dupId = false;
+        let nonNumeric = false;
+        qa.forEach(q => {
+          if (ids.has(q.id)) dupId = true;
+          ids.add(q.id);
+          if (typeof q.id !== 'number' || q.id <= 0) nonNumeric = true;
+        });
+
+        if (!dupId && !nonNumeric) {
+          results.push({ pass: true, msg: 'All question IDs are positive, unique numbers.' });
+        } else {
+          results.push({ pass: false, msg: 'Found duplicate or invalid question IDs in qa.json.' });
+        }
+
+        // Test 4: Topic slug existence
+        const topicSlugs = new Set(topics.map(t => t.slug));
+        const missingTopics = [];
+        qa.forEach(q => {
+          if (!topicSlugs.has(q.topic)) {
+            missingTopics.push(`ID #${q.id} -> "${q.topic}"`);
+          }
+        });
+
+        if (missingTopics.length === 0) {
+          results.push({ pass: true, msg: 'All questions reference valid, declared topic slugs.' });
+        } else {
+          results.push({ pass: false, msg: `Orphaned topic references found: ${missingTopics.join(', ')}` });
+        }
+
+        // Test 5: Date format adherence (YYYY-MM-DD)
+        const dateRegex = /^\d{4}-\d{2}-\d{2}$/;
+        let badDate = false;
+        qa.forEach(q => {
+          if (!dateRegex.test(q.answeredOn)) badDate = true;
+          if (q.updatedOn && !dateRegex.test(q.updatedOn)) badDate = true;
+        });
+
+        if (!badDate) {
+          results.push({ pass: true, msg: 'All answeredOn and updatedOn dates match YYYY-MM-DD standard.' });
+        } else {
+          results.push({ pass: false, msg: 'One or more entries contain invalid date formatting.' });
+        }
+
+        // Test 6: site.json critical fields
+        if (site && site.contact && site.contact.phone && site.donation && site.donation.bankDetails) {
+          results.push({ pass: true, msg: 'site.json has required contact and donation structures.' });
+        } else {
+          results.push({ pass: false, msg: 'site.json is missing required contact phone or donation bankDetails.' });
+        }
+
+        // Render checklist
+        const passedCount = results.filter(r => r.pass).length;
+        const totalCount = results.length;
+        const allPass = passedCount === totalCount;
+
+        summaryEl.innerHTML = `
+          <div class="alert ${allPass ? 'alert-success' : 'alert-error'}" style="margin: 0;">
+            <strong>${allPass ? '✓ All Consistency Checks Passed' : '⚠ Action Required'}</strong>: 
+            ${passedCount} of ${totalCount} checks successful.
+          </div>
+        `;
+
+        listEl.innerHTML = results.map(r => `
+          <div class="validation-item ${r.pass ? 'pass' : 'fail'}">
+            <span>${r.pass ? '✓' : '✗'}</span>
+            <span>${window.QAUtils.escapeHTML(r.msg)}</span>
+          </div>
+        `).join('');
+
+      } catch (err) {
+        summaryEl.innerHTML = `
+          <div class="alert alert-error">
+            Failed to run audit: ${window.QAUtils.escapeHTML(err.message)}
+          </div>
+        `;
+      }
+    }
+
+    document.getElementById('btn-retest')?.addEventListener('click', runFullAudit);
+    document.addEventListener('DOMContentLoaded', runFullAudit);
+  </script>
+</body>
+</html>
+

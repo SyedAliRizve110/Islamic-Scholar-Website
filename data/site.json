@@ -1,0 +1,62 @@
+{
+  "siteName": "Ayatullah Syed Sibtain Abbas Rizvi",
+  "tagline": "Questions & Answers on Islamic Jurisprudence",
+  "scholar": {
+    "name": "Ayatullah Syed Sibtain Abbas Rizvi",
+    "born": "1970, Azamgarh, India",
+    "qualification": "Attained Ijtihad",
+    "residence": "Qum, Iran and India",
+    "work": "Religious service for the followers of Ahlulbayt (a.s.)"
+  },
+  "contact": {
+    "phone": "+98-912-000-0000",
+    "phoneFormatted": "+98 912 000 0000",
+    "email": "contact@scholar-qa.example",
+    "whatsapp": "https://wa.me/989120000000",
+    "hours": "Saturday to Thursday: 10:00 AM – 1:00 PM (Iran Standard Time)",
+    "addresses": [
+      {
+        "label": "Office in Qum, Iran",
+        "lines": [
+          "Office of Ayatullah Syed Sibtain Abbas Rizvi",
+          "Near Holy Shrine of Lady Fatimah Masuma (s.a.)",
+          "Qum, Islamic Republic of Iran"
+        ]
+      },
+      {
+        "label": "Office in India",
+        "lines": [
+          "Azamgarh / Allahabad Liaison Office",
+          "Uttar Pradesh, India"
+        ]
+      }
+    ],
+    "social": [
+      {
+        "platform": "WhatsApp",
+        "url": "https://wa.me/989120000000"
+      },
+      {
+        "platform": "Telegram",
+        "url": "https://t.me/example"
+      }
+    ]
+  },
+  "donation": {
+    "note": "Donations directly support religious, educational, and guidance services for the followers of Ahlulbayt (a.s.) under the supervision of Ayatullah Syed Sibtain Abbas Rizvi.",
+    "qrImage": "assets/images/qr-code.png",
+    "bankDetails": {
+      "accountHolder": "Mohd Ali Rizvi",
+      "bankName": "PhonePe UPI / Indian Bank",
+      "accountNumber": "[Confirming with Scholar/Office]",
+      "branch": "[Branch Details]",
+      "ifsc": "[IFSC Code]"
+    }
+  },
+  "form": {
+    "service": "web3forms",
+    "endpoint": "https://api.web3forms.com/submit",
+    "accessKey": "YOUR_WEB3FORMS_ACCESS_KEY"
+  }
+}
+

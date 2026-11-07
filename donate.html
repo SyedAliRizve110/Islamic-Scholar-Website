@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Support &amp; Donations — Ayatullah Syed Sibtain Abbas Rizvi</title>
+  <meta name="description" content="Support the educational, religious guidance, and charitable activities under Ayatullah Syed Sibtain Abbas Rizvi via UPI QR code or bank transfer.">
+  <link rel="icon" href="assets/images/favicon.png" type="image/png">
+  <link rel="stylesheet" href="css/variables.css">
+  <link rel="stylesheet" href="css/reset.css">
+  <link rel="stylesheet" href="css/layout.css">
+  <link rel="stylesheet" href="css/components.css">
+  <link rel="stylesheet" href="css/pages.css">
+  <link rel="stylesheet" href="css/responsive.css">
+</head>
+<body class="site-wrapper">
+  <!-- Shared Header Injected by js/nav.js -->
+  <div id="site-header"></div>
+
+  <!-- Page Header -->
+  <section class="hero-banner" style="padding: var(--space-xl) 0;" aria-label="Donations Header">
+    <div class="container">
+      <div class="hero-inner">
+        <div class="hero-content">
+          <div class="hero-emblem">Religious Contributions</div>
+          <h1 class="hero-title" style="margin-bottom: var(--space-2xs);">Support &amp; Donations</h1>
+          <p class="hero-subtitle" style="margin-bottom: 0;">
+            Support the educational work, Hawza instruction, publication of rulings, and religious guidance of believers.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Main Content Layout -->
+  <main class="main-content" id="main-content">
+    <div class="container">
+      <nav class="breadcrumbs" aria-label="Breadcrumb">
+        <a href="index.html">Home</a>
+        <span class="breadcrumbs-separator">/</span>
+        <span class="breadcrumbs-current">Donate</span>
+      </nav>
+
+      <!-- Purpose & Information Banner -->
+      <div class="card" style="margin-bottom: var(--space-2xl); border-left: 4px solid var(--color-accent);">
+        <div class="card-body">
+          <h2 style="font-size: var(--font-size-xl); color: var(--color-primary-dark); margin-bottom: var(--space-xs);">
+            Purpose of Donations
+          </h2>
+          <p id="donation-note-container" style="font-size: var(--font-size-md); color: var(--color-text); line-height: var(--line-height-relaxed); margin: 0;">
+            Donations directly support religious, educational, and guidance services for the followers of Ahlulbayt (a.s.) under the supervision of Ayatullah Syed Sibtain Abbas Rizvi.
+          </p>
+        </div>
+      </div>
+
+      <!-- Verified Donor Notice Alert -->
+      <div class="alert alert-info" style="display: flex; gap: var(--space-sm); align-items: flex-start;">
+        <span style="font-size: var(--font-size-lg); line-height: 1;" aria-hidden="true">&#9432;</span>
+        <div>
+          <strong>Important Verification Notice:</strong>
+          Please confirm that the beneficiary name matches the verified account holder before completing any transfer. 
+          This page is display-only: it never asks for card numbers, PINs, or personal financial details.
+        </div>
+      </div>
+
+      <!-- Donation Methods Layout: QR Code + Bank Details -->
+      <div class="donate-layout">
+        
+        <!-- Left Column: UPI / PhonePe QR Code -->
+        <div id="donation-qr-container">
+          <!-- Rendered dynamically by js/donate.js -->
+        </div>
+
+        <!-- Right Column: Direct Bank Transfer Details -->
+        <div class="bank-details-card">
+          <h3 style="font-size: var(--font-size-lg); color: var(--color-primary-dark); margin-bottom: var(--space-xs);">
+            Direct Bank Transfer (NEFT / RTGS / IMPS)
+          </h3>
+          <p style="font-size: var(--font-size-sm); color: var(--color-text-muted); margin-bottom: var(--space-lg);">
+            Use the details below to transfer funds via online banking or your mobile banking app. Tap "Copy" to quickly copy numbers.
+          </p>
+
+          <div id="donation-bank-container">
+            <!-- Rendered dynamically by js/donate.js -->
+          </div>
+
+          <div style="margin-top: var(--space-xl); padding-top: var(--space-md); border-top: 1px solid var(--color-border-light); font-size: var(--font-size-xs); color: var(--color-text-muted);">
+            If you require an official confirmation or receipt for your religious dues (Sahm-e-Imam / Sahm-e-Sadat / General donations), 
+            please share the transaction reference with the scholar's office via our <a href="contact.html">Contact channels</a>.
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+  </main>
+
+  <!-- Shared Footer Injected by js/nav.js -->
+  <div id="site-footer"></div>
+
+  <!-- Scripts -->
+  <script src="js/utils.js"></script>
+  <script src="js/data-loader.js"></script>
+  <script src="js/nav.js"></script>
+  <script src="js/donate.js"></script>
+</body>
+</html>
+

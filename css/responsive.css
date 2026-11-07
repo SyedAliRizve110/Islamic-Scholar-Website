@@ -1,0 +1,102 @@
+/* ==========================================================================
+   Responsive Architecture & Media Queries
+   Scholar Q&A Website
+   ========================================================================== */
+
+/* --------------------------------------------------------------------------
+   Small Tablets & Landscape Phablets (>= 600px)
+   -------------------------------------------------------------------------- */
+@media (min-width: 600px) {
+  .grid-2 {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .footer-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .footer-bottom {
+    flex-direction: row;
+    justify-content: space-between;
+    text-align: left;
+  }
+}
+
+/* --------------------------------------------------------------------------
+   Tablets & Up (>= 768px)
+   - Switches navigation from mobile drawer to persistent horizontal bar
+   -------------------------------------------------------------------------- */
+@media (min-width: 768px) {
+  .header-inner {
+    padding-top: 0;
+    padding-bottom: 0;
+  }
+
+  .nav-toggle {
+    display: none; /* Hide hamburger on tablet and desktop */
+  }
+
+  .site-nav {
+    display: block !important;
+    position: static;
+    background: transparent;
+    border: none;
+    box-shadow: none;
+    padding: 0;
+  }
+
+  .nav-list {
+    flex-direction: row;
+    align-items: center;
+    gap: var(--space-xs);
+  }
+
+  .nav-link {
+    padding: 0.5rem 0.875rem;
+    font-size: var(--font-size-sm);
+  }
+
+  .nav-link.active {
+    background-color: var(--color-primary);
+    color: var(--color-text-inverse);
+  }
+}
+
+/* --------------------------------------------------------------------------
+   Desktop & Large Screens (>= 1024px)
+   - Activates desktop sidebar layout and multi-column grids
+   -------------------------------------------------------------------------- */
+@media (min-width: 1024px) {
+  .grid-3 {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  .footer-grid {
+    grid-template-columns: 2fr 1fr 1fr;
+  }
+
+  .sidebar-layout {
+    flex-direction: row;
+    align-items: flex-start;
+  }
+
+  .main-column {
+    flex: 1 1 0%;
+  }
+
+  .side-column {
+    flex: 0 0 var(--sidebar-width);
+    position: sticky;
+    top: calc(var(--header-height) + var(--space-md));
+  }
+}
+
+/* --------------------------------------------------------------------------
+   High-Resolution / Large Monitors (>= 1280px)
+   -------------------------------------------------------------------------- */
+@media (min-width: 1280px) {
+  .brand-title {
+    font-size: var(--font-size-xl);
+  }
+}
+

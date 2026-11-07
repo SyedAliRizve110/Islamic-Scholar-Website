@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Admin Publishing Tool — Ayatullah Syed Sibtain Abbas Rizvi</title>
+  <link rel="icon" href="assets/images/favicon.png" type="image/png">
+  <link rel="stylesheet" href="css/variables.css">
+  <link rel="stylesheet" href="css/reset.css">
+  <link rel="stylesheet" href="css/layout.css">
+  <link rel="stylesheet" href="css/components.css">
+  <link rel="stylesheet" href="css/admin.css">
+  <link rel="stylesheet" href="css/responsive.css">
+</head>
+<body style="background-color: #F4F6F4;">
+
+  <!-- Admin Top Bar -->
+  <header class="admin-header-bar">
+    <div class="container">
+      <div class="admin-header-inner">
+        <div class="admin-brand">
+          <span class="admin-badge">Admin</span>
+          <span style="font-family: var(--font-heading); font-size: var(--font-size-md); font-weight: bold;">
+            Ayatullah Syed Sibtain Abbas Rizvi &bull; Q&amp;A Publishing Console
+          </span>
+        </div>
+
+        <div style="display: flex; align-items: center; gap: var(--space-sm);">
+          <div class="admin-status-indicator">
+            <span class="status-dot" id="admin-status-dot"></span>
+            <span id="admin-status-text">Loading catalog...</span>
+          </div>
+          <button type="button" class="btn btn-sm btn-secondary" id="btn-how-to-publish">
+            📖 How to Publish
+          </button>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- Main Management Area -->
+  <main class="container" style="padding-top: var(--space-xl); padding-bottom: var(--space-3xl);">
+    
+    <!-- File Loader Notice & Fallback -->
+    <div class="admin-loader-box">
+      <div style="display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: var(--space-md);">
+        <div>
+          <h2 style="font-size: var(--font-size-md); color: var(--color-primary-dark); margin: 0 0 var(--space-2xs) 0;">
+            Data Files Sync
+          </h2>
+          <p style="font-size: var(--font-size-xs); color: var(--color-text-muted); margin: 0;">
+            Auto-loaded from local server. If opened directly via <code>file://</code>, pick your <code>data/qa.json</code> and <code>data/topics.json</code> below:
+          </p>
+        </div>
+        <div style="display: flex; gap: var(--space-xs); flex-wrap: wrap;">
+          <label class="btn btn-outline btn-sm" style="cursor: pointer;">
+            📂 Pick qa.json
+            <input type="file" id="file-qa-json" accept=".json" style="display: none;">
+          </label>
+          <label class="btn btn-outline btn-sm" style="cursor: pointer;">
+            📂 Pick topics.json
+            <input type="file" id="file-topics-json" accept=".json" style="display: none;">
+          </label>
+        </div>
+      </div>
+    </div>
+
+    <!-- Action Bar -->
+    <div class="admin-action-bar">
+      <!-- Left: Create buttons -->
+      <div style="display: flex; gap: var(--space-xs); flex-wrap: wrap;">
+        <button type="button" class="btn btn-primary btn-sm" id="btn-add-qa">
+          + Add New Answer
+        </button>
+        <button type="button" class="btn btn-outline btn-sm" id="btn-add-topic">
+          + Add New Topic
+        </button>
+        <button type="button" class="btn btn-outline btn-sm" id="btn-validate-data">
+          ✓ Validate Data
+        </button>
+      </div>
+
+      <!-- Right: Export buttons -->
+      <div style="display: flex; gap: var(--space-xs); flex-wrap: wrap;">
+        <button type="button" class="btn btn-secondary btn-sm" id="btn-export-qa">
+          💾 Download qa.json
+        </button>
+        <button type="button" class="btn btn-secondary btn-sm" id="btn-export-topics">
+          💾 Download topics.json
+        </button>
+      </div>
+    </div>
+
+    <!-- Filter & Search Bar -->
+    <div style="display: flex; gap: var(--space-sm); flex-wrap: wrap; margin-bottom: var(--space-md);">
+      <div style="flex: 1; min-width: 240px;">
+        <input type="search" 
+               id="admin-search-input" 
+               class="form-control" 
+               placeholder="Filter by question keyword, answer text, or ID..." 
+               style="padding: 0.5rem 0.85rem; font-size: var(--font-size-sm);">
+      </div>
+      <div style="width: 220px;">
+        <select id="admin-filter-topic" class="form-control" style="padding: 0.5rem 0.85rem; font-size: var(--font-size-sm);">
+          <option value="">All Topics</option>
+        </select>
+      </div>
+    </div>
+
+    <!-- Management Data Table -->
+    <div class="admin-table-wrapper">
+      <table class="admin-table">
+        <thead>
+          <tr>
+            <th style="width: 60px;">ID</th>
+            <th style="width: 140px;">Topic</th>
+            <th>Question</th>
+            <th style="width: 110px;">Answered</th>
+            <th style="width: 110px;">Updated</th>
+            <th style="width: 120px;">Actions</th>
+          </tr>
+        </thead>
+        <tbody id="admin-qa-tbody">
+          <tr>
+            <td colspan="6" style="text-align: center; padding: var(--space-xl); color: var(--color-text-muted);">
+              Loading Q&amp;A catalog...
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div style="text-align: center; font-size: var(--font-size-xs); color: var(--color-text-muted);">
+      <a href="index.html" style="color: var(--color-primary);">Return to Public Website &rarr;</a>
+    </div>
+  </main>
+
+  <!-- ======================================================================
+       MODAL 1: Add / Edit Question Modal
+       ====================================================================== -->
+  <div class="admin-modal-overlay" id="admin-qa-modal">
+    <div class="admin-modal-card">
+      <div class="admin-modal-header">
+        <h3 id="qa-modal-title">Add / Edit Answer</h3>
+        <button type="button" class="admin-modal-close" aria-label="Close modal">&times;</button>
+      </div>
+      <div class="admin-modal-body">
+        
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: var(--space-md); margin-bottom: var(--space-md);">
+          <div>
+            <label class="form-label">Question ID (Auto-assigned)</label>
+            <input type="text" id="qa-field-id" class="form-control" readonly style="background-color: var(--color-bg-alt); font-weight: bold; font-family: monospace;">
+          </div>
+          <div>
+            <label class="form-label">Topic <span class="required">*</span></label>
+            <select id="qa-field-topic" class="form-control" required></select>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="form-label">Question Text <span class="required">*</span></label>
+          <textarea id="qa-field-question" class="form-control" rows="3" placeholder="Enter question..." required></textarea>
+        </div>
+
+        <div class="form-group">
+          <label class="form-label">Full Answer / Ruling Text <span class="required">*</span></label>
+          <textarea id="qa-field-answer" class="form-control" rows="8" placeholder="Type the scholar's answer here. Use double line breaks between paragraphs..." required></textarea>
+        </div>
+
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: var(--space-md);">
+          <div>
+            <label class="form-label">Answered On (YYYY-MM-DD)</label>
+            <input type="date" id="qa-field-date" class="form-control">
+          </div>
+          <div>
+            <label class="form-label">Last Updated Date</label>
+            <input type="date" id="qa-field-updated" class="form-control" readonly style="background-color: var(--color-bg-alt);">
+          </div>
+        </div>
+
+      </div>
+      <div class="admin-modal-footer">
+        <button type="button" class="btn btn-outline btn-sm btn-modal-cancel">Cancel</button>
+        <button type="button" class="btn btn-primary btn-sm" id="btn-save-qa-modal">Save Entry</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ======================================================================
+       MODAL 2: Add Topic Modal
+       ====================================================================== -->
+  <div class="admin-modal-overlay" id="admin-topic-modal">
+    <div class="admin-modal-card" style="max-width: 500px;">
+      <div class="admin-modal-header">
+        <h3>Add New Topic</h3>
+        <button type="button" class="admin-modal-close" aria-label="Close modal">&times;</button>
+      </div>
+      <div class="admin-modal-body">
+        <div class="form-group">
+          <label class="form-label">Topic Display Name <span class="required">*</span></label>
+          <input type="text" id="topic-field-name" class="form-control" placeholder="e.g. Pilgrimage (Ziyarah)">
+        </div>
+        <div class="form-group">
+          <label class="form-label">URL Slug (Auto-generated)</label>
+          <input type="text" id="topic-field-slug" class="form-control" placeholder="pilgrimage-ziyarah">
+          <div class="form-text">Used in the website web address: ?topic=slug</div>
+        </div>
+      </div>
+      <div class="admin-modal-footer">
+        <button type="button" class="btn btn-outline btn-sm btn-modal-cancel">Cancel</button>
+        <button type="button" class="btn btn-primary btn-sm" id="btn-save-topic-modal">Add Topic</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ======================================================================
+       MODAL 3: Validation Report Modal
+       ====================================================================== -->
+  <div class="admin-modal-overlay" id="admin-validation-modal">
+    <div class="admin-modal-card">
+      <div class="admin-modal-header">
+        <h3>Data Integrity Report</h3>
+        <button type="button" class="admin-modal-close" aria-label="Close modal">&times;</button>
+      </div>
+      <div class="admin-modal-body">
+        <p style="font-size: var(--font-size-sm); color: var(--color-text-muted); margin-bottom: var(--space-md);">
+          Verifying ID uniqueness, topic references, date formats, and schema compliance:
+        </p>
+        <div id="validation-results"></div>
+      </div>
+      <div class="admin-modal-footer">
+        <button type="button" class="btn btn-primary btn-sm btn-modal-cancel">Close Report</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ======================================================================
+       MODAL 4: Plain Language "How to Publish" Guide
+       ====================================================================== -->
+  <div class="admin-modal-overlay" id="admin-help-modal">
+    <div class="admin-modal-card">
+      <div class="admin-modal-header">
+        <h3>How to Publish Changes (Step-by-Step)</h3>
+        <button type="button" class="admin-modal-close" aria-label="Close modal">&times;</button>
+      </div>
+      <div class="admin-modal-body" style="font-size: var(--font-size-sm); line-height: var(--line-height-relaxed);">
+        <p>Follow these simple steps whenever you add, edit, or delete an answer:</p>
+        
+        <ol style="padding-left: var(--space-lg); margin-bottom: var(--space-lg);">
+          <li style="margin-bottom: var(--space-xs);">
+            <strong>Make changes:</strong> Use the "Add New Answer", "Edit", or "Delete" buttons above.
+          </li>
+          <li style="margin-bottom: var(--space-xs);">
+            <strong>Verify:</strong> Click <strong>"Validate Data"</strong> to confirm there are no errors or broken topic links.
+          </li>
+          <li style="margin-bottom: var(--space-xs);">
+            <strong>Download:</strong> Click <strong>"Download qa.json"</strong> (and <strong>"Download topics.json"</strong> if you added a new topic).
+          </li>
+          <li style="margin-bottom: var(--space-xs);">
+            <strong>Replace files:</strong> Move the downloaded file(s) into the <code>data/</code> folder on your computer, replacing the old file.
+          </li>
+          <li style="margin-bottom: var(--space-xs);">
+            <strong>Deploy live:</strong> Open your terminal in the project folder and run:
+            <div class="git-code-box">
+git add .
+git commit -m "Updated rulings and answers"
+git push
+            </div>
+          </li>
+        </ol>
+
+        <div class="alert alert-success" style="margin: 0;">
+          ✓ Once you run <code>git push</code>, Vercel automatically deploys your updates live in 1 to 2 minutes!
+        </div>
+      </div>
+      <div class="admin-modal-footer">
+        <button type="button" class="btn btn-primary btn-sm btn-modal-cancel">Done</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Scripts -->
+  <script src="js/utils.js"></script>
+  <script src="js/data-loader.js"></script>
+  <script src="js/admin.js"></script>
+</body>
+</html>
+
