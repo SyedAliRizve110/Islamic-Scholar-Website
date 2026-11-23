@@ -1,0 +1,13 @@
+# robots.txt for Ayatullah Syed Sibtain Abbas Rizvi Website
+User-agent: *
+Allow: /
+
+# Private offline admin console and validator
+Disallow: /admin.html
+Disallow: /validate.html
+
+# Crawl-delay for polite crawling (optional)
+Crawl-delay: 1
+
+# XML Sitemap
+Sitemap: https://syedalirizve110.github.io/Islamic-Scholar-Website/sitemap.xml

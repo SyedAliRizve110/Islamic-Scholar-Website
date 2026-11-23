@@ -23,17 +23,18 @@
 }
 
 /* --------------------------------------------------------------------------
-   Tablets & Up (>= 768px)
+   Laptops & Desktops (>= 992px)
    - Switches navigation from mobile drawer to persistent horizontal bar
    -------------------------------------------------------------------------- */
-@media (min-width: 768px) {
+@media (min-width: 992px) {
   .header-inner {
     padding-top: 0;
     padding-bottom: 0;
+    gap: var(--space-xl);
   }
 
   .nav-toggle {
-    display: none; /* Hide hamburger on tablet and desktop */
+    display: none; /* Hide hamburger on desktop */
   }
 
   .site-nav {
@@ -48,17 +49,30 @@
   .nav-list {
     flex-direction: row;
     align-items: center;
-    gap: var(--space-xs);
+    gap: 6px;
+    flex-wrap: nowrap;
   }
 
   .nav-link {
-    padding: 0.5rem 0.875rem;
-    font-size: var(--font-size-sm);
+    padding: 0.45rem 0.65rem;
+    font-size: 0.85rem;
+    white-space: nowrap;
   }
 
   .nav-link.active {
     background-color: var(--color-primary);
     color: var(--color-text-inverse);
+  }
+}
+
+@media (min-width: 1200px) {
+  .nav-list {
+    gap: var(--space-xs);
+  }
+
+  .nav-link {
+    padding: 0.5rem 0.85rem;
+    font-size: var(--font-size-sm);
   }
 }
 

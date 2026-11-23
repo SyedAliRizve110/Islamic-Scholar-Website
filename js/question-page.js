@@ -64,6 +64,36 @@
         ? `<span style="color: var(--color-text-subtle); margin-left: 8px;">&bull; Last updated on ${window.QAUtils.formatDate(item.updatedOn)}</span>` 
         : '';
 
+      // Locate related questions under the same topic (excluding current question)
+      const relatedItems = qaList
+        .filter(q => q.topic === item.topic && q.id !== item.id)
+        .slice(0, 3);
+
+      let relatedHtml = '';
+      if (relatedItems.length > 0) {
+        const relatedCards = relatedItems.map(r => `
+          <div class="card" style="padding: var(--space-md); border-color: var(--color-border-light);">
+            <div style="font-size: var(--font-size-xs); color: var(--color-text-muted); margin-bottom: 4px;">
+              ${window.QAUtils.formatDate(r.answeredOn)}
+            </div>
+            <a href="question.html?id=${r.id}" style="font-size: var(--font-size-sm); font-weight: var(--font-weight-semibold); color: var(--color-primary-dark); text-decoration: none;">
+              ${window.QAUtils.escapeHTML(r.question)}
+            </a>
+          </div>
+        `).join('');
+
+        relatedHtml = `
+          <section style="margin-top: var(--space-2xl); padding-top: var(--space-xl); border-top: 1px solid var(--color-border-light);">
+            <h3 style="font-size: var(--font-size-md); color: var(--color-primary-dark); margin-bottom: var(--space-sm);">
+              More Rulings on ${window.QAUtils.escapeHTML(topicName)}
+            </h3>
+            <div style="display: grid; gap: var(--space-sm);">
+              ${relatedCards}
+            </div>
+          </section>
+        `;
+      }
+
       container.innerHTML = `
         <article class="question-view-card">
           <header class="question-view-header">
@@ -92,14 +122,19 @@
               <button type="button" class="btn btn-copy" id="copy-permalink-btn" style="padding: 0.4rem 0.85rem; font-size: var(--font-size-sm);">
                 <span>&#128279;</span> Copy Permanent Link
               </button>
+              <button type="button" class="btn btn-outline btn-sm" id="print-ruling-btn">
+                <span>&#128438;</span> Print Ruling
+              </button>
               <a href="topic.html?topic=${encodeURIComponent(item.topic)}" class="btn btn-outline btn-sm">
-                &larr; More rulings on ${window.QAUtils.escapeHTML(topicName)}
+                &larr; All in ${window.QAUtils.escapeHTML(topicName)}
               </a>
             </div>
             <div>
               <a href="ask.html" class="btn btn-primary btn-sm">Ask a Related Question &rarr;</a>
             </div>
           </footer>
+
+          ${relatedHtml}
         </article>
       `;
 
@@ -108,6 +143,14 @@
       if (copyBtn) {
         copyBtn.addEventListener('click', function () {
           window.QAUtils.copyToClipboard(window.location.href, this);
+        });
+      }
+
+      // Attach print button handler
+      const printBtn = document.getElementById('print-ruling-btn');
+      if (printBtn) {
+        printBtn.addEventListener('click', function () {
+          window.print();
         });
       }
 

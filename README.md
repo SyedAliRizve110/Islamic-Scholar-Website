@@ -58,6 +58,7 @@ Islamic-Q&A-website/
 ├── topics.html                 # A–Z topic index with sticky jump bar & live search
 ├── topic.html                  # Single topic page (?topic=slug)
 ├── question.html               # Single Q&A view with permanent link (?id=123)
+├── videos.html                 # Embedded YouTube lectures, majalis, and TV series player
 ├── ask.html                    # Send a Question form with anti-spam honeypot
 ├── ask-success.html            # Confirmation receipt page
 ├── contact.html                # Tap-to-call phone, email, WhatsApp, and office locations

@@ -11,7 +11,8 @@
   const cache = {
     qa: null,
     topics: null,
-    site: null
+    site: null,
+    lectures: null
   };
 
   /**
@@ -92,12 +93,27 @@
     },
 
     /**
+     * Load Lectures / Videos database from data/lectures.json (cached)
+     * @param {boolean} [forceReload=false] - Force bypass cache
+     * @returns {Promise<Array>}
+     */
+    async loadLectures(forceReload = false) {
+      if (!forceReload && cache.lectures) {
+        return cache.lectures;
+      }
+      const data = await fetchJSON(getDataPath('lectures.json'));
+      cache.lectures = Array.isArray(data) ? data : [];
+      return cache.lectures;
+    },
+
+    /**
      * Clear all in-memory caches
      */
     clearCache() {
       cache.qa = null;
       cache.topics = null;
       cache.site = null;
+      cache.lectures = null;
     }
   };
 

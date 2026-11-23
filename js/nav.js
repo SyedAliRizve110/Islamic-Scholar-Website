@@ -11,6 +11,7 @@
   const NAV_ITEMS = [
     { label: 'Home', href: 'index.html', match: ['index.html', ''] },
     { label: 'Biography', href: 'biography.html', match: ['biography.html'] },
+    { label: 'Lectures', href: 'videos.html', match: ['videos.html', 'lectures.html'] },
     { label: 'Q&A', href: 'topics.html', match: ['topics.html', 'topic.html', 'question.html', 'search.html'] },
     { label: 'Ask a Question', href: 'ask.html', match: ['ask.html', 'ask-success.html'] },
     { label: 'Contact', href: 'contact.html', match: ['contact.html'] },
@@ -164,6 +165,7 @@
               <ul class="footer-links">
                 <li><a href="index.html">Home</a></li>
                 <li><a href="biography.html">Biography</a></li>
+                <li><a href="videos.html">Lectures &amp; Majalis</a></li>
                 <li><a href="topics.html">Browse Questions by Topic</a></li>
                 <li><a href="ask.html">Send a Question</a></li>
                 <li><a href="contact.html">Contact Information</a></li>

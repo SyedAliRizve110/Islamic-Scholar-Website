@@ -64,10 +64,11 @@
       const results = [];
 
       try {
-        const [qa, topics, site] = await Promise.all([
+        const [qa, topics, site, lectures] = await Promise.all([
           window.DataLoader.loadQA(true),
           window.DataLoader.loadTopics(true),
-          window.DataLoader.loadSiteInfo(true)
+          window.DataLoader.loadSiteInfo(true),
+          window.DataLoader.loadLectures(true)
         ]);
 
         // Test 1: qa.json loaded
@@ -134,6 +135,18 @@
           results.push({ pass: true, msg: 'site.json has required contact and donation structures.' });
         } else {
           results.push({ pass: false, msg: 'site.json is missing required contact phone or donation bankDetails.' });
+        }
+
+        // Test 7: lectures.json verified playlists
+        if (Array.isArray(lectures) && lectures.length > 0) {
+          const hasIds = lectures.every(l => l.id && l.title && l.embedUrl);
+          if (hasIds) {
+            results.push({ pass: true, msg: `lectures.json contains ${lectures.length} verified playlist collections with valid YouTube embed endpoints.` });
+          } else {
+            results.push({ pass: false, msg: 'One or more lectures entries lack an id, title, or embedUrl.' });
+          }
+        } else {
+          results.push({ pass: false, msg: 'lectures.json is empty or not an array.' });
         }
 
         // Render checklist
