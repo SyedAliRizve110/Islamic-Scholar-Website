@@ -4,6 +4,34 @@
    ========================================================================== */
 
 /* --------------------------------------------------------------------------
+   Mobile Viewports (< 480px)
+   - Guarantees strict zero-overflow boundaries and keeps nav button fully visible
+   -------------------------------------------------------------------------- */
+@media (max-width: 480px) {
+  .container,
+  .container-narrow {
+    padding-left: 12px;
+    padding-right: 12px;
+  }
+
+  .hero-actions {
+    flex-direction: column;
+    width: 100%;
+  }
+
+  .hero-actions .btn {
+    width: 100%;
+    justify-content: center;
+    text-align: center;
+  }
+
+  .hero-portrait-frame {
+    width: 180px;
+    height: 220px;
+  }
+}
+
+/* --------------------------------------------------------------------------
    Small Tablets & Landscape Phablets (>= 600px)
    -------------------------------------------------------------------------- */
 @media (min-width: 600px) {
@@ -31,6 +59,20 @@
     padding-top: 0;
     padding-bottom: 0;
     gap: var(--space-xl);
+  }
+
+  .brand {
+    flex: 0 0 auto;
+    margin-right: var(--space-md);
+  }
+
+  .brand-title {
+    font-size: var(--font-size-lg);
+    white-space: nowrap;
+  }
+
+  .brand-tagline {
+    white-space: normal;
   }
 
   .nav-toggle {
