@@ -10,4 +10,4 @@ Disallow: /validate.html
 Crawl-delay: 1
 
 # XML Sitemap
-Sitemap: https://syedalirizve110.github.io/Islamic-Scholar-Website/sitemap.xml
+Sitemap: https://ayatullah-syed-sibtain.vercel.app/sitemap.xml
